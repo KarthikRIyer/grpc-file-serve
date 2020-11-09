@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package fileserve;
+
+service FileService {
+
+  rpc GetFile (FileRequest) returns (stream FileResponse) {}
+
+  rpc GetFileList (FileListRequest) returns (stream FileNameResponse) {}
+
+}
+
+message FileRequest {
+  string name = 1;
+}
+
+message FileListRequest {}
+
+message FileResponse {
+  bytes data = 1;
+}
+
+message FileNameResponse {
+  string name = 1;
+}
